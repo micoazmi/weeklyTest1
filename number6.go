@@ -22,7 +22,7 @@ func plusOne(nums []int) []int {
 	for converts > 0 {
 		i := converts % 10
 		result = append([]int{i}, result...)
-		i /= 10
+		converts /= 10
 	}
 	return result
 }
