@@ -24,5 +24,6 @@ func removeDuplicateLetter(words string) string {
 		}
 
 	}
+
 	return duplicate
 }
