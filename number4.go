@@ -11,12 +11,19 @@ func main() {
 func removeDuplicate(nums []int) []int {
 	results := []int{}
 
-	for _, num := range nums {
-		found := false
-		if found {
-			results = append(results, num)
+	for i := 0; i < len(nums); i++ {
+		if !found(results, nums[i]) {
+			results = append(results, nums[i])
 		}
-
 	}
 	return results
+}
+
+func found(results []int, num int) bool {
+	for _, result := range results {
+		if result == num {
+			return true
+		}
+	}
+	return false
 }
