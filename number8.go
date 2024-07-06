@@ -5,8 +5,8 @@ import (
 )
 
 func main() {
-	fmt.Println(sliceOperation([]int{1, 2, 3, 4, 5}, []int{2, 4, 6, 7}, 1))
-	fmt.Println(sliceOperation([]int{1, 2, 3, 4, 5}, []int{2, 4, 6, 7}, 2))
+	fmt.Println(sliceOperation([]int{1, 2, 3, 4, 5, 3}, []int{2, 4, 6, 7}, 1))
+	fmt.Println(sliceOperation([]int{1, 2, 3, 4, 5}, []int{2, 4, 6, 7, 6}, 2))
 	fmt.Println(sliceOperation([]int{1, 2, 3, 4, 5}, []int{2, 4, 6, 7}, 3))
 	fmt.Println(sliceOperation([]int{1, 2, 3, 4, 5}, []int{2, 4, 6, 7}, 4))
 
@@ -18,22 +18,20 @@ func sliceOperation(nums1 []int, nums2 []int, typeOperation int) []int {
 	switch typeOperation {
 	case 1:
 		for _, num1 := range nums1 {
-			for _, num2 := range nums2 {
-				if num1 != num2 {
-					if !found(results, num1) {
-						results = append(results, num1)
+			if !found(nums2, num1) {
+				if !found(results, num1) {
+					results = append(results, num1)
 
-					}
 				}
+
 			}
 		}
 	case 2:
 		for _, num2 := range nums2 {
-			for _, num1 := range nums1 {
-				if num2 != num1 {
-					if !found(results, num2) {
-						results = append(results, num2)
-					}
+			if !found(nums1, num2) {
+				if !found(results, num2) {
+					results = append(results, num2)
+
 				}
 			}
 		}

@@ -19,24 +19,25 @@ func sliceFruits(fruits1 []string, fruits2 []string, operationType int) []string
 	switch operationType {
 	case 1:
 		for _, fruit1 := range fruits1 {
-			for _, fruit2 := range fruits2 {
-				if fruit1 == fruit2 {
-					if !found(result, fruit2) {
-						result = append(result, fruit2)
+			if found(fruits2, fruit1) {
+				if !found(result, fruit1) {
+					result = append(result, fruit1)
 
-					}
 				}
 			}
 		}
 	case 2:
 		for _, fruit1 := range fruits1 {
-			for _, fruit2 := range fruits2 {
-				if fruit1 != fruit2 {
-					if !found(result, fruit1) {
-						result = append(result, fruit1)
+			if !found(fruits2, fruit1) {
+				if !found(result, fruit1) {
+					result = append(result, fruit1)
 
-					}
 				}
+			}
+		}
+		for _, fruit2 := range fruits2 {
+			if !found(fruits1, fruit2) {
+				result = append(result, fruit2)
 			}
 		}
 	default:
